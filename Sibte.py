@@ -1,5 +1,5 @@
 #=============================
-#==Commit 9: Added FPS meter==
+#==Commit 11: Added FPS meter==
 #=============================
 
 
@@ -8,7 +8,7 @@ screen.blit(fps_text, (10, 10))
 
 
 #=============================
-#===Commit 10: Map Borders====
+#===Commit 12: Map Borders====
 #=============================
 
 
@@ -18,7 +18,7 @@ player_rect.y = max(0, min(player_rect.y, HEIGHT - player_rect.height))
 
 
 #=============================
-#==Commit 11: Pause Feature===
+#==Commit 13: Pause Feature===
 #=============================
 
 
@@ -36,7 +36,7 @@ if paused:
 
 
 #=============================
-#==Commit 12: BGM addition====
+#==Commit 14: BGM addition====
 #=============================
 
 
