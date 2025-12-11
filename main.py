@@ -117,3 +117,49 @@ class Bullet(GameObject):
 
     def get_rect(self):
         return (self._x, self._y, self._width, self._height)
+# ----------------------
+# COMMIT 4 — COLLISION, GAME VARIABLES, CSV START INDEX
+# ----------------------
+
+def check_collision(rect1, rect2):
+    x1, y1, w1, h1 = rect1
+    x2, y2, w2, h2 = rect2
+    return x1 < x2+w2 and x1+w1 > x2 and y1 < y2+h2 and y1+h1 > y2
+
+
+player = Player()
+enemies = []
+bullets = []
+score = 0
+game_over = False
+start_time = time.time()
+
+# Enemy tracking variables
+enemies_spawned = 0
+enemies_destroyed = 0
+enemies_reached_bottom = 0
+
+# Gameplay histories for CSV dataset
+score_history = []
+player_lives_history = []
+bullets_fired_history = []
+hits_history = []
+enemies_spawned_history = []
+enemies_destroyed_history = []
+enemies_reached_bottom_history = []
+
+
+def spawn_enemy():
+    global enemies_spawned
+    enemies.append(Enemy())
+    enemies_spawned += 1
+
+
+# determine CSV starting index
+if os.path.exists(csv_path):
+    with open(csv_path, 'r') as f:
+        reader = csv.reader(f)
+        next(reader)  # skip header
+        time_start = sum(1 for row in reader)
+else:
+    time_start = 0
