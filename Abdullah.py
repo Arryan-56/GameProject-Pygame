@@ -1,21 +1,12 @@
 # ----------------------
-# BULLET CLASS
+# COLLISION
 # ----------------------
-class Bullet(GameObject):
-    def __init__(self, x, y):
-        super().__init__(x, y)
-        self._width = 5
-        self._height = 15
-        self._speed = 7
-
-    def move(self):
-        self._y -= self._speed
-
-    def draw(self):
-        pygame.draw.rect(screen, WHITE, (self._x, self._y, self._width, self._height))
-
-    def off_screen(self):
-        return self._y < -10
-
-    def get_rect(self):
-        return (self._x, self._y, self._width, self._height)
+def check_collision(rect1, rect2):
+    x1, y1, w1, h1 = rect1
+    x2, y2, w2, h2 = rect2
+    return (
+        x1 < x2 + w2 and
+        x1 + w1 > x2 and
+        y1 < y2 + h2 and
+        y1 + h1 > y2
+    )
