@@ -25,3 +25,22 @@ font = pygame.font.SysFont(None, 35)
 # create data folder
 os.makedirs("data", exist_ok=True)
 csv_path = os.path.join("data", "game_dataset.csv")
+# ----------------------
+# COMMIT 2 — ABSTRACT BASE CLASS
+# ----------------------
+
+class GameObject(ABC):
+    def __init__(self, x, y):
+        self._x = x
+        self._y = y
+
+    @abstractmethod
+    def move(self):
+        pass
+
+    @abstractmethod
+    def draw(self):
+        pass
+
+    def get_position(self):
+        return self._x, self._y
