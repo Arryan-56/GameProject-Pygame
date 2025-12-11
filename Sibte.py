@@ -15,3 +15,21 @@ screen.blit(fps_text, (10, 10))
 # Prevent player from leaving window as it creates map borders
 player_rect.x = max(0, min(player_rect.x, WIDTH - player_rect.width))
 player_rect.y = max(0, min(player_rect.y, HEIGHT - player_rect.height))
+
+
+#=============================
+#==Commit 11: Pause Feature===
+#=============================
+
+
+paused = False
+
+if event.key == pygame.K_p:
+    paused = not paused
+
+if paused:
+    pause_text = font.render("Paused", True, WHITE)
+    screen.blit(pause_text, (WIDTH//2 - 50, HEIGHT//2))
+    pygame.display.update()
+    continue
+
