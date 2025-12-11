@@ -33,3 +33,34 @@ if paused:
     pygame.display.update()
     continue
 
+
+
+#=============================
+#==Commit 12: BGM addition====
+#=============================
+
+
+pygame.mixer.init()
+
+playlist = [
+    "genesis.mp3",
+    "ego.mp3",
+    "ls_mob.mp3",
+    "spacy_funk.mp3"
+]
+
+current_track = 0
+
+def play_next_track():
+    global current_track
+    pygame.mixer.music.load(playlist[current_track])
+    pygame.mixer.music.play()
+    current_track = (current_track + 1) % len(playlist)
+
+
+play_next_track()
+
+
+if not pygame.mixer.music.get_busy():
+    play_next_track()
+
